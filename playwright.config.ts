@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
+  timeout: 60000,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -9,6 +10,9 @@ export default defineConfig({
   reporter: 'html',
   use: {
     trace: 'on-first-retry',
+   // baseURL: 'https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F',
+    headless: true,
+    viewport: { width: 1280, height: 720 },
   },
 
   /* Configure projects for major browsers */
