@@ -8,7 +8,7 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await page.locator('#txt_header').isVisible();
   await page.locator('//a[text()="Registro de horas"]').click();
   await page.locator('//*[@id="project-jump"]/span').click();
-  await page.locator('//*[@id="project-jump"]/div/div[2]/a[1]').click();
+  await page.locator('//*[@id="project-jump"]/div/div[2]/a[6]/span').click({timeout: 60000});
   await page.locator('#new_time_entry_0_hours').fill('4');
   await page.locator('#new_time_entry_0_comments').fill('- Ejecución de pruebas funcionales para los diferentes aplicativos de AEL, validando que el desarrollo de la solución de las Vulnerabilidades, no presenten bug, errores o fallos en los aplicativos.');
   await page.locator('#new_time_entry_1_hours').fill('2');
@@ -16,7 +16,7 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await page.locator('#new_time_entry_11_hours').fill('1');
   await page.locator('#new_time_entry_11_comments').fill('- Diseño de Test Case, para verificar o validar de que los cambios implementados por los desarrolladores para solucionar las vulnerabilidades de los portales no presenten error o fallas en el sistema.');
   await page.locator('#new_time_entry_12_hours').fill('2');
-  await page.locator('#new_time_entry_11_comments').fill('- Generación de los insumos (Datos de pruebas), para las pruebas funcionales de los diferentes componentes afectados por el desarrollo');
+  await page.locator('#new_time_entry_12_comments').fill('- Generación de los insumos (Datos de pruebas), para las pruebas funcionales de los diferentes componentes afectados por el desarrollo');
  // await page.locator('//input[@id="username"]').fill('jbgraciano');
   await page.locator('#button_save_time_entries').nth(0).click()
   //await page.getByText('t6732te3').dblclick();
