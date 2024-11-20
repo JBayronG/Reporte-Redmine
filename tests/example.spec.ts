@@ -1,14 +1,20 @@
 import { test, expect } from '@playwright/test';
 import { RedmineBase } from '../locators/RedmineBase';
 import { LoginToRedmine } from '../tasks/loginToRedmine';
+import { ValidationToRedmine } from '../tasks/ValidationToRedmine'
+import { DashboardToRedmine } from '../tasks/DashboardToRedmine';
 
 test('Inicio de Sesión Redmine', async ({ page }) => {
   const redmineBase = new RedmineBase(page);
   const loginToRedmine = new LoginToRedmine(page);
+  const validationToRedmine = new ValidationToRedmine(page);
+  const dashboardToRedmine = new DashboardToRedmine(page);
   await redmineBase.loadWeb('https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F');
   await loginToRedmine.LoginRedmine();
-});
-/*test('Inicio de Sesión Redmine', async ({ page }) => {
+  await validationToRedmine.ValidationPage();
+  await dashboardToRedmine.DashboardRedmine();
+});/*
+test('Inicio de Sesión Redmine', async ({ page }) => {
   await page.goto('https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F');
   await page.locator('//input[@id="username"]').fill('jbgraciano');
   await page.locator('//input[@id="password"]').fill('SQA$John-23**');
@@ -26,6 +32,6 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await page.locator('#new_time_entry_12_hours').fill('2');
   await page.locator('#new_time_entry_12_comments').fill('- Generación de los insumos (Datos de pruebas), para las pruebas funcionales de los diferentes componentes afectados por el desarrollo');
  // await page.locator('//input[@id="username"]').fill('jbgraciano');
-  //await page.locator('#button_save_time_entries').nth(0).click()
+  await page.locator('#button_save_time_entries').nth(0).click()
   //await page.getByText('t6732te3').dblclick();
 });*/

@@ -1,4 +1,4 @@
 
 export const ValidationPage = {
-    validationText : 'txt_header'
+    validationText : '#txt_header'
 }
