@@ -1,0 +1,17 @@
+{
+    "login": {
+      "username": "jbgraciano",
+      "password": "SQA$John-23**"
+    },
+    "timeEntries":
+      {
+        "timeHors0": 5,
+        "timeComments0": "- Ejecución de pruebas funcionales para los diferentes aplicativos de AEL, validando que el desarrollo de la solución de las Vulnerabilidades, no presenten bug, errores o fallos en los aplicativos. - Ejecutar Robot, para probar una mejor coberturas de las funcionalidades de los productos de AEL.",
+        "timeHors1": 2,
+        "timeComments1": "- Deily, revisión de los temas asignados, planeado los temas siguientes que se van a trabajar y gestionando los bloqueos. - Gestión de PBI´s, entendimiento de los desarrollos y preguntando que componentes se han visto afectados con la solución de la vulnerabilidad reportada por Fortify.- Validaciones funcionales de PBI. - Validación funcional de los PBIs con la PO, dar visto bueno para salir a producción.",
+        "timeHors11": 1,
+        "timeComments11": "- Diseño de Test Case, para verificar o validar de que los cambios implementados por los desarrolladores para solucionar las vulnerabilidades de los portales no presenten error o fallas en el sistema. ",
+        "timeHors12": 1,
+        "timeComments12": "- Generación de los insumos (Datos de pruebas), para las pruebas funcionales de los diferentes componentes afectados por el desarrollo."
+      }
+}
