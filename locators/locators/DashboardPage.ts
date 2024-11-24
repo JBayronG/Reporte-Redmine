@@ -1,5 +1,5 @@
 export const DashboardPage = {
-    registerHours  : '//a[text()="Registro de horas"]',
+    registerHours  : '#top-menu > ul > li:nth-child(4) > a',
     proyect        : '//*[@id="project-jump"]/span',
     proyect1       : '//*[@id="project-jump"]/div/div[2]/a[6]/span',
     timeHors0      : '#new_time_entry_0_hours',

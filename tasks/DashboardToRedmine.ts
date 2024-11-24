@@ -2,6 +2,9 @@ import { DashboardPage } from '../locators/locators/DashboardPage';
 import { RedmineBase } from '../locators/RedmineBase';
 import { Page, Locator } from '@playwright/test';
 
+
+const testData = require('../data/EntryData.json')
+
 export class DashboardToRedmine extends RedmineBase {
     private readonly registerHours : Locator;
     private readonly proyect : Locator;
@@ -33,16 +36,18 @@ export class DashboardToRedmine extends RedmineBase {
     }
 
     async DashboardRedmine(){
+        console.log(testData);
         await this.ClickOn(DashboardPage.registerHours);
         await this.ClickOn(DashboardPage.proyect);
         await this.ClickOn(DashboardPage.proyect1);
-        await this.fillField(DashboardPage.timeHors0,'jbgraciano');
-        await this.fillField(DashboardPage.timeComments0,'jbgraciano');
-        await this.fillField(DashboardPage.timeHors1,'jbgraciano');
-        await this.fillField(DashboardPage.timeComments1,'jbgraciano');
-        await this.fillField(DashboardPage.timeHors11,'jbgraciano');
-        await this.fillField(DashboardPage.timeComments11,'jbgraciano');
-        await this.fillField(DashboardPage.timeHors12,'jbgraciano');
-        await this.fillField(DashboardPage.timeComments12,'jbgraciano');
+        await this.fillField(DashboardPage.timeHors0, testData.timeEntries.timeHors0);
+        await this.fillField(DashboardPage.timeComments0,testData.timeEntries.timeComments0);
+        await this.fillField(DashboardPage.timeHors1,testData.timeEntries.timeHors1);
+        await this.fillField(DashboardPage.timeComments1,testData.timeEntries.timeComments1);
+        await this.fillField(DashboardPage.timeHors11,testData.timeEntries.timeHors11);
+        await this.fillField(DashboardPage.timeComments11,testData.timeEntries.timeComments11);
+        await this.fillField(DashboardPage.timeHors12,testData.timeEntries.timeHors12);
+        await this.fillField(DashboardPage.timeComments12,testData.timeEntries.timeComments12);
+        await this.ClickOn1(DashboardPage.buttonSave);
     }
 }
