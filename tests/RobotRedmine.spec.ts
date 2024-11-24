@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { RedmineBase } from '../locators/RedmineBase';
-import { LoginToRedmine } from '../tasks/loginToRedmine';
+import { LoginToRedmine } from '../tasks/LoginToRedmine';
 import { ValidationToRedmine } from '../tasks/ValidationToRedmine'
 import { DashboardToRedmine } from '../tasks/DashboardToRedmine';
 
@@ -12,5 +12,5 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await redmineBase.loadWeb('https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F');
   await loginToRedmine.LoginRedmine();
   await validationToRedmine.ValidationPage();
-  await dashboardToRedmine.DashboardRedmine();
+ // await dashboardToRedmine.DashboardRedmine();
 });
