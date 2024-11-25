@@ -48,6 +48,6 @@ export class DashboardToRedmine extends RedmineBase {
         await this.fillField(DashboardPage.timeComments11,testData.timeEntries.timeComments11);
         await this.fillField(DashboardPage.timeHors12,testData.timeEntries.timeHors12);
         await this.fillField(DashboardPage.timeComments12,testData.timeEntries.timeComments12);
-        await this.ClickOn1(DashboardPage.buttonSave);
+        //await this.ClickOn1(DashboardPage.buttonSave);
     }
 }

@@ -12,5 +12,5 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await redmineBase.loadWeb('https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F');
   await loginToRedmine.LoginRedmine();
   await validationToRedmine.ValidationPage();
- // await dashboardToRedmine.DashboardRedmine();
+  await dashboardToRedmine.DashboardRedmine();
 });
