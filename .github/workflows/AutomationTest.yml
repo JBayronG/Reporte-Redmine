@@ -30,6 +30,10 @@ jobs:
       # 3. Instalar dependencias
       - name: Install dependencies
         run: npm install
+        
+         # 4. Instalar navegadores de Playwright
+      - name: Install Playwright browsers
+        run: npx playwright install
 
       # 4. Ejecutar las pruebas con Playwright
       - name: Run Playwright tests
