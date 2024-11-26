@@ -13,4 +13,6 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await loginToRedmine.LoginRedmine();
   await validationToRedmine.ValidationPage();
   await dashboardToRedmine.DashboardRedmine();
+  await validationToRedmine.ValidationTitle();
+  await dashboardToRedmine.FillFieldRedmine();
 });

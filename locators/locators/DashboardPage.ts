@@ -1,7 +1,9 @@
+import test from "node:test";
+
 export const DashboardPage = {
-    registerHours  : '#top-menu > ul > li:nth-child(4) > a',
-    proyect        : '//*[@id="project-jump"]/span',
-    proyect1       : '//*[@id="project-jump"]/div/div[2]/a[6]/span',
+    proyect        : '//*[@id="top-menu"]/ul/li[3]/a',
+    proyect1       : '//*[@id="project-18919"]/td[3]/a',
+    proyect2       : '//*[@id="main-menu"]/ul/li[10]/a',
     timeHors0      : '#new_time_entry_0_hours',
     timeComments0  : '#new_time_entry_0_comments',
     timeHors1      : '#new_time_entry_1_hours',
@@ -10,5 +12,7 @@ export const DashboardPage = {
     timeComments11 : '#new_time_entry_11_comments',
     timeHors12     : '#new_time_entry_12_hours',
     timeComments12 : '#new_time_entry_12_comments',
-    buttonSave     : '#button_save_time_entries'
+    buttonSave     : '#button_save_time_entries',
+    text           : 'Ir al proyecto...',
+    test1          : 'Todos los proyectos'
 }

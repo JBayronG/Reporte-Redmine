@@ -18,7 +18,7 @@ export class RedmineBase {
         await this.page.locator(selector).fill(value.toString());
     }
     async expectVisible(selector: string){
-        await expect(this.page.locator(selector)).toBeVisible();
+        await expect(this.page.locator(selector)).toBeVisible({ timeout: 10000 });
     }
     async ClickOn1(selector: string, index: number = 0) {
         try {

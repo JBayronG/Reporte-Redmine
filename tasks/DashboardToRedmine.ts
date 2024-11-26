@@ -36,10 +36,12 @@ export class DashboardToRedmine extends RedmineBase {
     }
 
     async DashboardRedmine(){
-        console.log(testData);
-        await this.ClickOn(DashboardPage.registerHours);
         await this.ClickOn(DashboardPage.proyect);
         await this.ClickOn(DashboardPage.proyect1);
+        await this.ClickOn(DashboardPage.proyect2);
+    }
+
+    async FillFieldRedmine(){
         await this.fillField(DashboardPage.timeHors0, testData.timeEntries.timeHors0);
         await this.fillField(DashboardPage.timeComments0,testData.timeEntries.timeComments0);
         await this.fillField(DashboardPage.timeHors1,testData.timeEntries.timeHors1);
@@ -48,6 +50,9 @@ export class DashboardToRedmine extends RedmineBase {
         await this.fillField(DashboardPage.timeComments11,testData.timeEntries.timeComments11);
         await this.fillField(DashboardPage.timeHors12,testData.timeEntries.timeHors12);
         await this.fillField(DashboardPage.timeComments12,testData.timeEntries.timeComments12);
+    }
+
+    async SaveRedmine(){
         //await this.ClickOn1(DashboardPage.buttonSave);
     }
 }
