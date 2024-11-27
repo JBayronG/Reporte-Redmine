@@ -1,53 +1,37 @@
+---
 name: TestAutomation
-
 on:
-  # Disparar la acción al hacer push o abrir un pull request en la rama master
   push:
     branches:
-      - "master"
+      - master
   pull_request:
     branches:
-      - "master"
-
+      - master
   schedule:
-      - cron: "10 18 * * *"
-
-  # Permite disparar manualmente desde GitHub Actions
-  workflow_dispatch:
-
+    - cron: 30 18 * * *
+  workflow_dispatch: null
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout del código
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # 2. Configuración de Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Cambia según lo que necesites
-
-      # 3. Instalar dependencias
+          node-version: "20"
       - name: Install dependencies
         run: npm install
-        
-         # 4. Instalar navegadores de Playwright
       - name: Install Playwright browsers
         run: npx playwright install
-
-      # 4. Ejecutar las pruebas con Playwright
       - name: Run Playwright tests
         run: npx playwright test
         env:
           CI: true
-
-      # 5. Generar y subir reporte de pruebas
       - name: Upload Playwright report
-        if: always() # Subir siempre el reporte, incluso si las pruebas fallan
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: playwright-report/ # Directorio del reporte generado
+          path: playwright-report/
+
