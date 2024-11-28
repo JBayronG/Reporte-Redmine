@@ -1,56 +1,39 @@
 name: TestAutomation
-# Triggers para ejecutar el workflow
-on:
-  push: # Cuando hay un push a la rama master
-    branches:
-      - master
-  pull_request: # Cuando hay un pull request hacia la rama master
-    branches:
-      - master
-  schedule: # Programar la ejecución automáticamente
-    - cron: "40 23 * * *" # Cada día a las 23:40 UTC
-  workflow_dispatch: # Permitir ejecutar manualmente
-    inputs:
-      environment:
-        description: "El entorno a ejecutar"
-        required: false
 
-# Definición de trabajos
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "40 23 * * *"
+  workflow_dispatch: null
+
 jobs:
   test:
-    runs-on: ubuntu-latest # Configura el sistema operativo del runner
-
+    runs-on: ubuntu-latest
     steps:
-      # 1. Checkout del repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # 2. Configuración de Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20" # Versión de Node.js
-
-      # 3. Instalar dependencias del proyecto
+          node-version: "20"
       - name: Install dependencies
         run: npm install
-
-      # 4. Instalar navegadores para Playwright
       - name: Install Playwright browsers
         run: npx playwright install
-
-      # 5. Ejecutar pruebas de Playwright
       - name: Run Playwright tests
         run: npx playwright test
-        env: # Configurar variables de entorno
+        env:
           CI: true
-          REDMINE_USERNAME: ${{ secrets.REDMINE_USERNAME }} # Se obtiene del repositorio
-          REDMINE_PASSWORD: ${{ secrets.REDMINE_PASSWORD }} # Se obtiene del repositorio
-
-      # 6. Subir el reporte de Playwright como artefacto
+          REDMINE_USERNAME: ${{ secrets.REDMINE_USERNAME }}
+          REDMINE_PASSWORD: ${{ secrets.REDMINE_PASSWORD }}
       - name: Upload Playwright report
-        if: always() # Siempre subir el reporte, incluso si falla
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report # Nombre del artefacto
-          path: playwright-report/ # Ruta del directorio donde se genera el reporte
+          name: playwright-report
+          path: playwright-report/
