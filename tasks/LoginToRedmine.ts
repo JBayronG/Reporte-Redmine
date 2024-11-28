@@ -1,9 +1,10 @@
+import dotenv from 'dotenv';
 import { LoginPage } from '../locators/locators/LoginPage';
 import { RedmineBase } from '../locators/RedmineBase';
 import { Page, Locator } from '@playwright/test';
 
-
- const testData = require('../data/EntryData.json')
+// Cargar las variables de entorno desde el archivo .env
+dotenv.config();
 
 export class LoginToRedmine extends RedmineBase {
     private readonly userName : Locator;
@@ -18,8 +19,15 @@ export class LoginToRedmine extends RedmineBase {
     }
 
     async LoginRedmine(){
-        await this.fillField(LoginPage.userName,testData.login.username);
-        await this.fillField(LoginPage.password,testData.login.password);
-        await this.ClickOn(LoginPage.submitLogin);
+           // Leer las credenciales desde las variables de entorno
+           const username = process.env.REDMINE_USERNAME || '';
+           const password = process.env.REDMINE_PASSWORD || '';
+   
+           if (!username || !password) {
+               throw new Error('Credenciales no definidas en las variables de entorno');
+           }
+        await this.userName.fill(username);
+        await this.password.fill(password)
+        await this.submitLogin.click();
     }
 }

@@ -53,6 +53,6 @@ export class DashboardToRedmine extends RedmineBase {
     }
 
     async SaveRedmine(){
-        //await this.ClickOn1(DashboardPage.buttonSave);
+        await this.clickOn1(DashboardPage.buttonSave);
     }
 }
