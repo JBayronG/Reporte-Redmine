@@ -37,3 +37,13 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
+          
+      - name: Send success email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          subject: "✅ Test Passed: Playwright Automation"
+          body: |
+            The Playwright tests ran successfully in the GitHub Actions workflow.
+            Check the uploaded report for details.
