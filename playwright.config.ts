@@ -13,29 +13,14 @@ export default defineConfig({
    // baseURL: 'https://redmine.sqasa.co/login?back_url=http%3A%2F%2Fredmine.sqasa.co%2F',
     headless: true,
     viewport: { width: 1280, height: 720 },
+    screenshot:'on'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-   /* {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-*/
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-  ],
+      use: { ...devices['Desktop Chrome'] }
+    }
+  ]
 });
