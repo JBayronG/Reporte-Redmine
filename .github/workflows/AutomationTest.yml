@@ -12,7 +12,7 @@ on:
   workflow_dispatch: null
 
 jobs:
-  test:
+  HourReportingAutomation:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
