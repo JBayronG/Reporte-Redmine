@@ -43,9 +43,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "✅ Test Passed: Playwright Automation"
           to: bayrongrasiano12@gmail.com
-          from: bayrongrasiano12@gmail.com
+          from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             The Playwright tests ran successfully in the GitHub Actions workflow.
             Check the uploaded report for details.
