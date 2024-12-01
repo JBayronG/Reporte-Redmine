@@ -39,6 +39,7 @@ jobs:
           path: playwright-report/
           
       - name: Send success email
+        if: success()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -46,8 +47,25 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "✅ Test Passed: Playwright Automation"
-          to: bayrongrasiano12@gmail.com
+          to: ${{ secrets.GMAIL_RECIPIENT }}
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             The Playwright tests ran successfully in the GitHub Actions workflow.
             Check the uploaded report for details.
+          attachments: playwright-report/index.html
+
+      - name: Send Email on Failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: ❌ Test Failed: Playwright Automation
+          to: ${{ secrets.GMAIL_RECIPIENT }}
+          from: ${{ secrets.GMAIL_USERNAME }}
+          body: |
+            The Playwright tests failed in the GitHub Actions workflow.
+            Check the attached report for details.
+          attachments: playwright-report/index.html
