@@ -1,3 +1,5 @@
+[![TestAutomation](https://github.com/JBayronG/Reporte-Redmine/actions/workflows/AutomationTest.yml/badge.svg)](https://github.com/JBayronG/Reporte-Redmine/actions/workflows/AutomationTest.yml)
+
 1. Proyecto de reporte de horas
 2. Herramientas utilizadas:
    - Visual Studio Code
