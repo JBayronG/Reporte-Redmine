@@ -1,5 +1,4 @@
 name: TestAutomation
-
 on:
   push:
     branches:
@@ -8,9 +7,8 @@ on:
     branches:
       - master
   schedule:
-    - cron: "40 23 * * *"
+    - cron: 40 23 * * *
   workflow_dispatch: null
-
 jobs:
   HourReportingAutomation:
     runs-on: ubuntu-latest
@@ -37,24 +35,23 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-          
       - name: Send success email
         if: success()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: "✅ Test Passed: Playwright Automation"
           to: ${{ secrets.GMAIL_RECIPIENT }}
-          from: ${{ secrets.EMAIL_USERNAME }}
-          body: |
+          from: ${{ secrets.GMAIL_USERNAME }}
+          body: >
             The Playwright tests ran successfully in the GitHub Actions workflow.
+
             Check the uploaded report for details.
           attachments: playwright-report/index.html
-
-      - name: Send Email on Failure
+      - name: Send failure email
         if: failure()
         uses: dawidd6/action-send-mail@v3
         with:
@@ -62,7 +59,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          subject: ❌ Test Failed: Playwright Automation
+          subject: "❌ Test Failed: Playwright Automation"
           to: ${{ secrets.GMAIL_RECIPIENT }}
           from: ${{ secrets.GMAIL_USERNAME }}
           body: |
