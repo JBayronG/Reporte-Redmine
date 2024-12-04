@@ -17,20 +17,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
+          
       - name: Install dependencies
         run: npm install
+        
       - name: Install Playwright browsers
         run: npx playwright install
+        
       - name: Run Playwright tests
         run: npx playwright test
         env:
           CI: true
           REDMINE_USERNAME: ${{ secrets.REDMINE_USERNAME }}
           REDMINE_PASSWORD: ${{ secrets.REDMINE_PASSWORD }}
+          
       - name: Upload Playwright report
         if: always()  # Siempre se ejecuta, incluso si los tests fallan
         uses: actions/upload-artifact@v4
@@ -47,12 +52,40 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "✅ Test Passed: Playwright Automation"
+          subject: "✅ Reporte de Pruebas: Automatización Playwright Completado Exitosamente"
           to: ${{ secrets.GMAIL_RECIPIENT }}
-          from: ${{ secrets.EMAIL_USERNAME }}  # Aquí se añade el campo "from"
+          from: ${{ secrets.EMAIL_USERNAME }}
           body: |
-            The Playwright tests ran successfully in the GitHub Actions workflow.
-            Check the uploaded report for details.
+            **Buenas tardes, John,**
+  
+            Nos complace informarle que su **reporte diario en Redmine/Operaciones SQA** se ha ejecutado con éxito.
+  
+            ### **Resumen del Proceso**
+            - **Plataforma:** Redmine/Operaciones SQA
+            - **Fecha de Ejecución:** ${{ github.event.inputs.date }}
+            - **Hora de Finalización:** ${{ github.event.inputs.time }}
+            - **Estado General:** ✅ **Exitoso.**
+            - **Duración del Proceso:** ${{ github.event.inputs.duration }}
+  
+            ### **Detalles del Proceso**
+            - **Todos los pasos fueron completados con éxito.**
+            - **Sin errores ni interrupciones durante la ejecución.**
+            - **Reporte Generado:** Sí.
+  
+            ### **Próximos Pasos**
+            - El reporte está disponible para su revisión detallada.
+            - Si necesita realizar alguna acción adicional o tiene dudas, por favor, no dude en contactarnos.
+  
+            **Gracias por confiar en nuestro servicio, John.**  
+            Estamos comprometidos en ofrecerle un proceso continuo y eficiente. 
+  
+            **Saludos cordiales,**  
+            _Equipo de Automatización y Reportes_  
+            Redmine/Operaciones SQA
+  
+            ---
+            **Nota:** Este mensaje fue generado automáticamente por nuestro sistema. Si tiene preguntas, no dude en contactarnos.
+  
           attachments: playwright-report/index.html  # Asegúrate de que este archivo exista
 
       # Enviar correo si los tests fallan
@@ -64,10 +97,45 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "❌ Test Failed: Playwright Automation"
+          subject: "🚨 Alerta: Las Pruebas de Playwright Fallaron Durante la Ejecución"
           to: ${{ secrets.GMAIL_RECIPIENT }}
-          from: ${{ secrets.EMAIL_USERNAME }}  # Aquí también se añade el campo "from"
+          from: ${{ secrets.EMAIL_USERNAME }}
           body: |
-            The Playwright tests failed in the GitHub Actions workflow.
-            Check the attached report for details.
+            **Buenas tardes, John,**
+  
+            Queremos informarle que durante la ejecución del **reporte diario en Redmine/Operaciones SQA**, se detectaron **problemas** que impidieron completar el proceso con éxito.  
+  
+            ### **Resumen del Proceso**
+            - **Plataforma:** Redmine/Operaciones SQA
+            - **Fecha de Ejecución:** ${{ github.event.inputs.date }}
+            - **Hora de Finalización:** ${{ github.event.inputs.time }}
+            - **Estado General:** ❌ **Fallido.**
+            - **Duración del Proceso:** ${{ github.event.inputs.duration }}
+  
+            ### **Detalles del Problema**
+            - **Descripción del Error:** [Mensaje de error específico si está disponible o “Problema no especificado”].
+            - **Paso Afectado:** [Paso o módulo afectado en Redmine/Operaciones SQA].
+            - **Reporte Generado:** Sí/No.
+  
+            ### **Acciones en Curso**
+            Nuestro equipo ya está investigando el incidente para identificar la causa raíz y aplicar una solución lo más pronto posible.  
+  
+            ### **Recomendaciones**
+            - Le sugerimos no realizar acciones manuales en los módulos afectados hasta que le confirmemos que el problema ha sido resuelto.  
+            - Si necesita asistencia inmediata, puede responder este correo o contactarnos directamente.
+  
+            ### **Próximos Pasos**
+            - Recibirá una notificación una vez que el problema sea resuelto.
+            - Mientras tanto, puede revisar más detalles en el reporte adjunto.
+  
+            **Agradecemos su comprensión, John.**  
+            Lamentamos los inconvenientes ocasionados y seguimos trabajando para restablecer el servicio a la brevedad.
+  
+            **Saludos cordiales,**  
+            _Equipo de Automatización y Reportes_  
+            Redmine/Operaciones SQA
+  
+            ---
+            **Nota:** Este mensaje fue generado automáticamente por nuestro sistema. Si tiene preguntas, no dude en contactarnos.
+  
           attachments: playwright-report/index.html  # Asegúrate de que este archivo exista
