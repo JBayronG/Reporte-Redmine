@@ -73,7 +73,6 @@ jobs:
   
             Nos complace informarle que su reporte diario en Redmine/Operaciones SQA se ha ejecutado con éxito.
 
-            ![Captura de pantalla](cid:screenshot)
   
                Resumen del Proceso
             - Plataforma: Redmine/Operaciones SQA
@@ -102,7 +101,7 @@ jobs:
          ## attachments: playwright-report/index.html  # Asegúrate de que este archivo exista
           attachments: |
                    [
-                           { "file": "path/to/screenshot.png", "inline": true, "cid": "screenshot" }
+                       { "file": "playwright-report/screenshots/screenshot.png", "inline": true, "cid": "screenshot" }
                    ]
 
       # Enviar correo si los tests fallan
