@@ -1,5 +1,3 @@
-import test from "node:test";
-
 export const DashboardPage = {
     proyect        : '//*[@id="top-menu"]/ul/li[3]/a',
     proyect1       : '//*[@id="project-18919"]/td[3]/a',
