@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   timeout: 60000,
@@ -23,4 +23,4 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] }
     }
   ]
-});
+})
