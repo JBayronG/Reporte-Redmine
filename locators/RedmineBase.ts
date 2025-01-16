@@ -12,7 +12,7 @@ export class RedmineBase {
     }
     async ClickOn(selector: string){
         await this.page.locator(selector).waitFor({ state: 'visible' })
-        await this.page.locator(selector).click();
+        await this.page.locator(selector).click()
     }
     async fillField(selector: string, value: string | number){
         await this.page.locator(selector).fill(value.toString())
@@ -44,3 +44,4 @@ export class RedmineBase {
     }
     
 }
+
