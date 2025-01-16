@@ -39,6 +39,8 @@ jobs:
           CI: true
           REDMINE_USERNAME: ${{ secrets.REDMINE_USERNAME }}
           REDMINE_PASSWORD: ${{ secrets.REDMINE_PASSWORD }}
+          OPERACION_USERNAME: ${{ secrets.OPERACION_USERNAME }}
+          OPERACION_PASSWORD: ${{ secrets.OPERACION_PASSWORD }}
 
       - name: Capture End Time and Duration
         id: end_time
