@@ -13,8 +13,16 @@ on:
 
 jobs:
   HourReportingAutomation:
+    # No se ejecuta si el secret está en "true" 
     runs-on: ubuntu-latest
     steps:
+      # No se ejecuta si el secret está en "true" 
+      - name: Check if workflow is paused
+        run: |
+          if [ "${{ secrets.WORKFLOW_PAUSED }}" == "true" ]; then
+          echo "🚨 Workflow pausado. Saliendo..."
+          exit 1
+          fi
       - name: Checkout repository
         uses: actions/checkout@v4
         
