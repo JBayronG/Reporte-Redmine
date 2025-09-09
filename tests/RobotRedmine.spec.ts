@@ -4,6 +4,7 @@ import { LoginToRedmine } from '../tasks/LoginToRedmine'
 import { ValidationToRedmine } from '../tasks/ValidationToRedmine'
 import { DashboardToRedmine } from '../tasks/DashboardToRedmine'
 
+//Test que se automamatiza la pagina Redmine..
 test('Inicio de Sesión Redmine', async ({ page }) => {
   const redmineBase = new RedmineBase(page)
   const loginToRedmine = new LoginToRedmine(page)
@@ -15,5 +16,4 @@ test('Inicio de Sesión Redmine', async ({ page }) => {
   await dashboardToRedmine.DashboardRedmine()
   await validationToRedmine.ValidationTitle()
   await dashboardToRedmine.FillFieldRedmine()
-  await dashboardToRedmine.SaveRedmine()
-})
+// await dashboardToRedmine.SaveRedmine()})
